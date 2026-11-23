@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VAULT — AAA Game Explorer</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="#top">VAULT</a>
+    <a href="#browse">Browse</a>
+    <a href="#vault">My Vault <span class="badge" id="vault-count">0</span></a>
+    <form class="search" id="search-form" role="search">
+      <input id="search" type="search" placeholder="Search games…" aria-label="Search games" autocomplete="off">
+    </form>
+  </header>
+
+  <main id="top">
+    <section class="hero is-loading" id="hero">
+      <img class="hero__img" id="hero-img" alt="">
+      <div class="hero__content">
+        <p class="kicker" id="hero-kicker"></p>
+        <h1 id="hero-title"></h1>
+        <p class="meta" id="hero-meta"></p>
+        <div class="hero__buttons">
+          <button class="btn btn--accent" id="hero-details">View details</button>
+          <button class="btn" id="hero-save">Add to Vault</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recent-section" hidden>
+      <h2>Recently viewed</h2>
+      <div class="row" id="recent"></div>
+    </section>
+
+    <section class="section" id="browse">
+      <div class="section__head">
+        <h2>Browse</h2>
+        <p class="status" id="status"></p>
+        <label>Genre
+          <select id="genre">
+            <option value="all">All genres</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="role-playing-games-rpg">RPG</option>
+            <option value="shooter">Shooter</option>
+          </select>
+        </label>
+        <label>Sort
+          <select id="sort">
+            <option value="metacritic">Metacritic</option>
+            <option value="rating">User rating</option>
+            <option value="released">Newest</option>
+            <option value="name">Name A–Z</option>
+          </select>
+        </label>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section class="section" id="vault">
+      <div class="section__head">
+        <h2>My Vault</h2>
+        <p class="status" id="vault-stats"></p>
+      </div>
+      <div class="tabs" id="tabs">
+        <button class="tab is-active" data-tab="wishlist">Wishlist</button>
+        <button class="tab" data-tab="playing">Playing</button>
+        <button class="tab" data-tab="finished">Finished</button>
+      </div>
+      <div class="grid" id="vault-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Data by <a href="https://rawg.io" target="_blank" rel="noopener">RAWG</a> · CSE-2340 Software Development I · Mini Project 3–4 · by tahsan</p>
+  </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Game details">
+      <button class="modal__close" id="modal-close" aria-label="Close">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+</body>
+</html>
