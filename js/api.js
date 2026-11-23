@@ -20,11 +20,12 @@ async function request(path, params, signal) {
   return response.json();
 }
 
-// No search text: load the top-rated modern action/adventure games (the AAA story games).
+// No search text: the most popular big PlayStation-era action/adventure games
+// scoring 88+ on Metacritic (GTA V, Red Dead Redemption 2, God of War, Uncharted 4...).
 export async function getGames(searchText, signal) {
   const params = searchText
     ? { search: searchText, search_precise: true }
-    : { genres: "action,adventure", ordering: "-metacritic", dates: "2013-01-01,2026-12-31" };
+    : { genres: "action,adventure", parent_platforms: 2, metacritic: "88,100", ordering: "-added", dates: "2013-01-01,2026-12-31" };
   params.page_size = GAMES_PER_PAGE;
   const data = await request("/games", params, signal);
   return data.results;
