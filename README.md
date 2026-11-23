@@ -4,7 +4,7 @@ A small web app for browsing big-budget story games (Red Dead Redemption 2, The 
 
 Built with plain **HTML, CSS and JavaScript** (about 600 lines). No frameworks, no build step.
 
-**Live demo:** https://tahasanurkarim-pixel.github.io/vault-aaa-games/
+**Live demo:** https://vault-aaa-games.vercel.app/ (also on GitHub Pages: https://tahasanurkarim-pixel.github.io/vault-aaa-games/)
 
 ![VAULT home page](assets/screenshot.jpg)
 
