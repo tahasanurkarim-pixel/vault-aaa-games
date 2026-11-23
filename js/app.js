@@ -1,6 +1,5 @@
 // app.js — app state, rendering and event listeners.
-import { getGames, getGameDetails } from "./api.js";
-import * as storage from "./storage.js";
+// Uses getGames/getGameDetails (api.js) and storage (storage.js), loaded before this file.
 
 const $ = (selector) => document.querySelector(selector); // short for querySelector
 const grid = $("#grid");

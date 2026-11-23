@@ -1,5 +1,5 @@
 // api.js — every request to the RAWG API lives here.
-import { API_KEY, API_BASE, GAMES_PER_PAGE } from "./config.js";
+// Uses API_KEY, API_BASE and GAMES_PER_PAGE from config.js.
 
 // Calls fetch and returns the JSON, or throws an Error with a readable message.
 async function request(path, params, signal) {
@@ -22,7 +22,7 @@ async function request(path, params, signal) {
 
 // No search text: the most popular big PlayStation-era action/adventure games
 // scoring 88+ on Metacritic (GTA V, Red Dead Redemption 2, God of War, Uncharted 4...).
-export async function getGames(searchText, signal) {
+async function getGames(searchText, signal) {
   const params = searchText
     ? { search: searchText, search_precise: true }
     : { genres: "action,adventure", parent_platforms: 2, metacritic: "88,100", ordering: "-added", dates: "2013-01-01,2026-12-31" };
@@ -31,6 +31,6 @@ export async function getGames(searchText, signal) {
   return data.results;
 }
 
-export async function getGameDetails(id) {
+async function getGameDetails(id) {
   return request(`/games/${id}`, {});
 }

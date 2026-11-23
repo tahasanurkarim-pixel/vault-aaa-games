@@ -26,23 +26,26 @@ function toSummary(game) {
 }
 
 // Vault: [{ ...summary, status: "wishlist" | "playing" | "finished", addedAt }]
-export const getVault = () => loadList("vault");
-export function setStatus(game, status) {
+const getVault = () => loadList("vault");
+function setStatus(game, status) {
   const vault = getVault().filter((item) => item.id !== game.id);
   vault.push({ ...toSummary(game), status, addedAt: Date.now() });
   save("vault", vault);
 }
-export function removeFromVault(id) {
+function removeFromVault(id) {
   save("vault", getVault().filter((item) => item.id !== id));
 }
 
 // Recently viewed: newest first, no duplicates, max 8.
-export const getRecent = () => loadList("recent");
-export function addRecent(game) {
+const getRecent = () => loadList("recent");
+function addRecent(game) {
   const others = getRecent().filter((item) => item.id !== game.id);
   save("recent", [toSummary(game), ...others].slice(0, 8));
 }
 
 // Last used genre filter and sort order.
-export const getPrefs = () => ({ genre: "all", sort: "metacritic", ...load("prefs", {}) });
-export const savePrefs = (prefs) => save("prefs", prefs);
+const getPrefs = () => ({ genre: "all", sort: "metacritic", ...load("prefs", {}) });
+const savePrefs = (prefs) => save("prefs", prefs);
+
+// One object so app.js can call storage.getVault(), storage.addRecent(), ...
+const storage = { getVault, setStatus, removeFromVault, getRecent, addRecent, getPrefs, savePrefs };

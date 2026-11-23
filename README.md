@@ -20,11 +20,7 @@ Built with plain **HTML, CSS and JavaScript** (about 600 lines). No frameworks, 
 
 ## Run locally
 
-```bash
-python3 -m http.server 8000
-```
-
-Open http://localhost:8000. Put your free RAWG key in `js/config.js` first.
+Double-click `index.html`, or serve the folder (e.g. VS Code Live Server, or `python3 -m http.server 8000` and open http://localhost:8000). The RAWG key is already in `js/config.js`.
 
 ## Files
 
